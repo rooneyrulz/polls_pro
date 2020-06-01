@@ -28,8 +28,7 @@ INSTALLED_APPS = [
 
     # OWN APPS
     'account',
-    'question',
-    'choice',
+    'poll',
 ]
 
 MIDDLEWARE = [
