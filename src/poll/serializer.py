@@ -3,12 +3,20 @@ from .models import Question, Choice
 
 
 class ChoiceSerializer(serializers.ModelSerializer):
+    question = serializers.StringRelatedField()
+
     class Meta:
         model = Choice
-        fields = '__all__'
+        fields = [
+            'id',
+            'text',
+            'vote',
+            'question',
+            'created_at',
+        ]
 
 class QuestionSerializer(serializers.ModelSerializer):
-    choices = serializers.PrimaryKeyRelatedField(queryset=Choice.objects.all(), many=True)
+    choices = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Question
         fields = [
