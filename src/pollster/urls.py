@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/poll/', include('poll.urls', namespace='poll'))
+    path('api/poll/', include('language.urls', namespace='language'))
 ]
