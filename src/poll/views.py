@@ -1,9 +1,38 @@
 from rest_framework.views import APIView
+from rest_framework.generics import (
+    ListAPIView,
+    RetrieveAPIView,
+    CreateAPIView,
+    UpdateAPIView,
+    DestroyAPIView
+)
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST
 
 from .serializer import QuestionSerializer, ChoiceSerializer
 from .models import Question, Choice
+
+class PollListAPI(ListAPIView):
+    queryset            = Question.objects.all()
+    serializer_class    = QuestionSerializer
+
+class PollCreateAPI(CreateAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+class PollRetrieveAPI(RetrieveAPIView):
+    queryset            = Question.objects.all()
+    serializer_class    = QuestionSerializer
+    # lookup_field = 'id'
+
+class PollUpdateAPIView(UpdateAPIView):
+    queryset            = Question.objects.all()
+    serializer_class    = QuestionSerializer
+
+class PollDestroyAPIView(DestroyAPIView):
+    queryset            = Question.objects.all()
+    serializer_class    = QuestionSerializer
+
 
 class GetPolls(APIView):
 
@@ -19,8 +48,6 @@ class GetPolls(APIView):
             return Response(serializer.data, status=HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
-
-            
 
 
 class GetPoll(APIView):
