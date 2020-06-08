@@ -30,8 +30,6 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # OWN APPS
-    'account',
-    'poll',
 ]
 
 MIDDLEWARE = [
