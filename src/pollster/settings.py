@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # OWN APPS
+    'language.apps.LanguageConfig',
+    'framework.apps.FrameworkConfig'
 ]
 
 MIDDLEWARE = [

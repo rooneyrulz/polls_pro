@@ -1,11 +1,11 @@
 from django.db import models
-from language.models import Question
+from language.models import Language
 
-class Choice(models.Model):
-    text = models.CharField(max_length=100, unique=True, blank=False, null=False)
-    question = models.ForeignKey(Question, related_name='choice', on_delete=models.SET_NULL, null=True)
+class Framework(models.Model):
+    name = models.CharField(max_length=100, unique=True, blank=False, null=False)
+    language = models.ForeignKey(Language, related_name='framework', on_delete=models.CASCADE)
     vote = models.IntegerField(blank=False, null=False, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self, *args, **kwargs):
-        return self.text
+        return self.name

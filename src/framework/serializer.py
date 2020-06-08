@@ -1,16 +1,16 @@
 from rest_framework import serializers
-from .models import Choice
+from .models import Framework
 
 
-class ChoiceSerializer(serializers.ModelSerializer):
-    question = serializers.StringRelatedField()
+class FrameworkSerializer(serializers.ModelSerializer):
+    language = serializers.StringRelatedField()
 
     class Meta:
-        model = Choice
+        model = Framework
         fields = [
             'id',
-            'text',
+            'name',
             'vote',
-            'question',
+            'language',
             'created_at',
         ]
