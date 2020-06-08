@@ -8,7 +8,7 @@ class LanguageSerializer(serializers.ModelSerializer):
         model = Language
         fields = [
             'id',
-            'text',
+            'name',
             'frameworks',
             'created_at',
         ]

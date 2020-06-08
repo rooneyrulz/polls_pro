@@ -5,7 +5,7 @@ class Language(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     @property
-    def choices(self, *args, **kwargs):
+    def frameworks(self, *args, **kwargs):
         return self.framework.all()
         
     def __str__(self, *args, **kwargs):

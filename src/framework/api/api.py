@@ -8,7 +8,7 @@ from framework.models import Framework
 class GetFrameworks(APIView):
     
     def get(self, request, *args, **kwargs):
-        queryset = Choice.objects.all()
+        queryset = Framework.objects.all()
         serializer = FrameworkSerializer(queryset, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
 

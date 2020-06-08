@@ -3,5 +3,5 @@ from .api.api import GetFrameworks
 
 app_name = 'framework'
 urlpatterns = [
-    path('choices/', GetFrameworks, name='list-framework'),
+    path('', GetFrameworks.as_view(), name='list-framework'),
 ]
