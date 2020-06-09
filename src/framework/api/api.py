@@ -32,19 +32,17 @@ class FrameworkCreateAPI(LanguageObjectMixin, CreateAPIView):
     serializer_class    = FrameworkSerializer
 
     def perform_create(self, serializer):
-        serializer.save(language=self.get_language_object(id=self.kwargs.get('pk')))
+        serializer.save(language=self.get_language_object(id=self.kwargs.get('language_pk')))
 
-class GetFrameworks(APIView):
-    
-    def get(self, request, *args, **kwargs):
-        queryset = Framework.objects.all()
-        serializer = FrameworkSerializer(queryset, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
 
-    def post(self, request, *args, **kwargs):
-        serializer = FrameworkSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+class FrameworkUpdateAPI(LanguageObjectMixin, UpdateAPIView):
+    queryset            = Framework.objects.all()
+    serializer_class    = FrameworkSerializer
+
+    def perform_update(self, serializer):
+        serializer.save(language=self.get_language_object(id=self.kwargs.get('language_pk')))
+
+
+class FrameworkDestroyAPI(DestroyAPIView):
+    queryset            = Framework.objects.all()
+    serializer_class    = FrameworkSerializer
