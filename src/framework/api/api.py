@@ -46,3 +46,7 @@ class FrameworkUpdateAPI(LanguageObjectMixin, UpdateAPIView):
 class FrameworkDestroyAPI(DestroyAPIView):
     queryset            = Framework.objects.all()
     serializer_class    = FrameworkSerializer
+
+class FrameworkCreateVoteAPI(LanguageObjectMixin, APIView):
+    def get(self, request, *args, **kwargs):
+        pass
