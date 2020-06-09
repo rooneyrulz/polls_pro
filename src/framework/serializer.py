@@ -6,8 +6,8 @@ class FrameworkSerializer(serializers.ModelSerializer):
     language = serializers.StringRelatedField()
 
     class Meta:
-        model = Framework
-        fields = [
+        model   = Framework
+        fields  = [
             'id',
             'name',
             'vote',

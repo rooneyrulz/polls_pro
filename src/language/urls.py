@@ -7,7 +7,7 @@ from .api.api import (
     LanguageDestroyAPIView
 )
 
-app_name = 'language'
+app_name    = 'language'
 urlpatterns = [
     path('', LanguageListAPI.as_view(), name='language-list'),
     path('create/', LanguageCreateAPI.as_view(), name='language-create'),

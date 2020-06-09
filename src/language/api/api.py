@@ -17,8 +17,8 @@ class LanguageListAPI(ListAPIView):
     serializer_class    = LanguageSerializer
 
 class LanguageCreateAPI(CreateAPIView):
-    queryset = Language.objects.all()
-    serializer_class = LanguageSerializer
+    queryset            = Language.objects.all()
+    serializer_class    = LanguageSerializer
 
 class LanguageRetrieveAPI(RetrieveAPIView):
     queryset            = Language.objects.all()
