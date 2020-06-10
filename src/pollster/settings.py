@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # OWN APPS
+    'account.apps.AccountConfig',
     'language.apps.LanguageConfig',
     'framework.apps.FrameworkConfig'
 ]
