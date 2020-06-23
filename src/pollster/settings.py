@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     # OWN APPS
     'account.apps.AccountConfig',
     'language.apps.LanguageConfig',
-    'framework.apps.FrameworkConfig'
+    'framework.apps.FrameworkConfig',
 ]
 
 MIDDLEWARE = [
