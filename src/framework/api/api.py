@@ -72,7 +72,7 @@ class FrameworkCreateVoteAPI(
         serializer.save(
             name=self.get_object().name,
             language=self.get_language_object(id=self.kwargs.get('language_pk')),
-            vote=self.request.user,
+            vote=self.get_object().vote + 1,
         )
 
         
