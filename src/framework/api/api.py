@@ -19,6 +19,10 @@ class LanguageObjectMixin(object):
     def get_language_object(self, id=None):
         return get_object_or_404(Language, pk=id)
 
+class FrameworkObjectMixin(object):
+    def get_framework_object(self, id=None):
+        return get_object_or_404(Framework, pk=id)
+
 
 class FrameworkListAPI(ListAPIView):
     queryset            = Framework.objects.all()
@@ -52,6 +56,23 @@ class FrameworkDestroyAPI(DestroyAPIView):
     serializer_class    = FrameworkSerializer
     permission_classes  = [permissions.IsAuthenticated]
 
-class FrameworkCreateVoteAPI(LanguageObjectMixin, APIView):
-    def get(self, request, *args, **kwargs):
-        pass
+class FrameworkCreateVoteAPI(
+    LanguageObjectMixin,
+    FrameworkObjectMixin,
+    UpdateAPIView):
+    queryset            = Framework.objects.all()
+    serializer_class    = FrameworkSerializer
+    permission_classes  = [permissions.IsAuthenticated]
+
+    def get_object(self, *args, **kwargs):
+        if self.get_language_object(id=self.kwargs.get('language_pk')):
+            return self.get_framework_object(id=self.kwargs.get('pk'))
+
+    def perform_update(self, serializer):
+        serializer.save(
+            name=self.get_object().name,
+            language=self.get_language_object(id=self.kwargs.get('language_pk')),
+            vote=self.request.user,
+        )
+
+        
