@@ -56,23 +56,34 @@ class FrameworkDestroyAPI(DestroyAPIView):
     serializer_class    = FrameworkSerializer
     permission_classes  = [permissions.IsAuthenticated]
 
-class FrameworkCreateVoteAPI(
-    LanguageObjectMixin,
-    FrameworkObjectMixin,
-    UpdateAPIView):
+# class FrameworkCreateVoteAPI(
+#     LanguageObjectMixin,
+#     FrameworkObjectMixin,
+#     UpdateAPIView):
+#     queryset            = Framework.objects.all()
+#     serializer_class    = FrameworkSerializer
+#     permission_classes  = [permissions.IsAuthenticated]
+
+#     def get_object(self, *args, **kwargs):
+#         if self.get_language_object(id=self.kwargs.get('language_pk')):
+#             return self.get_framework_object(id=self.kwargs.get('pk'))
+
+#     def perform_update(self, serializer):
+#         serializer.save(
+#             name=self.get_object().name,
+#             language=self.get_language_object(id=self.kwargs.get('language_pk')),
+#             vote=self.get_object().vote + 1,
+#         )
+
+
+class FrameworkCreateVoteAPI(UpdateAPIView):
     queryset            = Framework.objects.all()
     serializer_class    = FrameworkSerializer
     permission_classes  = [permissions.IsAuthenticated]
 
-    def get_object(self, *args, **kwargs):
-        if self.get_language_object(id=self.kwargs.get('language_pk')):
-            return self.get_framework_object(id=self.kwargs.get('pk'))
-
     def perform_update(self, serializer):
         serializer.save(
-            name=self.get_object().name,
-            language=self.get_language_object(id=self.kwargs.get('language_pk')),
-            vote=self.get_object().vote + 1,
+            vote=self.get_object().vote.add(self.request.user)
         )
 
         
