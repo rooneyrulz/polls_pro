@@ -81,9 +81,11 @@ class FrameworkCreateVoteAPI(UpdateAPIView):
     serializer_class    = FrameworkSerializer
     permission_classes  = [permissions.IsAuthenticated]
 
+    # def get_object(self, *args, **kwargs):
+    #     return get_object_or_404(Framework, pk=self.kwargs.get('pk'))
+
     def perform_update(self, serializer):
-        serializer.save(
-            vote=self.get_object().vote.add(self.request.user)
-        )
+        serializer.validated_data['vote'].append(self.request.user)
+        serializer.save()
 
         
