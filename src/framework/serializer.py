@@ -14,3 +14,18 @@ class FrameworkSerializer(serializers.ModelSerializer):
             'language',
             'created_at',
         ]
+
+
+# class FrameworkVoteSerializer(serializers.ModelSerializer):
+#     language = serializers.StringRelatedField()
+
+#     class Meta:
+#         model   = Framework
+#         fields  = [
+#             'id',
+#             'name',
+#             'vote',
+#             'language',
+#             'created_at',
+#         ]
+
