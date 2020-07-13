@@ -1,12 +1,27 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App() {
+// COMPONENTS
+import Polls from './pages/Polls';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
+
+const App: React.FC = () => {
   return (
-    <div className='App'>
-      <h1>React Polls Pro</h1>
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <header></header>
+        <main>
+          <Switch>
+            <Route exact path='/' component={Polls} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
+          </Switch>
+        </main>
+        <footer></footer>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
