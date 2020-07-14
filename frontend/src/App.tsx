@@ -1,24 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-// COMPONENTS
-import Polls from './pages/Polls';
-import Register from './pages/auth/Register';
-import Login from './pages/auth/Login';
+// LAYOUTS
+import AppHeader from './layouts/AppHeader';
+import AppFooter from './layouts/AppFooter';
+
+// ROUTES
+import Routing from './components/routes/Routing';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className='App'>
-        <header></header>
+        <header>
+          <AppHeader />
+        </header>
         <main>
-          <Switch>
-            <Route exact path='/' component={Polls} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/register' component={Register} />
-          </Switch>
+          <Routing />
         </main>
-        <footer></footer>
+        <footer>
+          <AppFooter />
+        </footer>
       </div>
     </BrowserRouter>
   );
