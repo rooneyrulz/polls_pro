@@ -6,7 +6,7 @@ import AppHeader from './layouts/AppHeader';
 import AppFooter from './layouts/AppFooter';
 
 // ROUTES
-import Routing from './components/routes/Routing';
+import Routing from './routes/Routing';
 
 const App: React.FC = () => {
   return (

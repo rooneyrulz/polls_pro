@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // COMPONENTS
-import Polls from '../../pages/Polls';
-import Login from '../../pages/auth/Login';
-import Register from '../../pages/auth/Register';
+import Polls from '../pages/polls/Polls';
+import Login from '../pages/auth/Login';
+import Register from '../pages/auth/Register';
 
 const Routing = () => {
   return (
