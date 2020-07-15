@@ -8,6 +8,9 @@ import AppFooter from './layouts/AppFooter';
 // ROUTES
 import Routing from './routes/Routing';
 
+// STYLES
+import './App.css';
+
 const App: React.FC = () => {
   return (
     <BrowserRouter>
