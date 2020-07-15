@@ -28,7 +28,7 @@ const Login: React.FC = () => {
           <Form.Check type='checkbox' label='Check me out' defaultChecked />
         </Form.Group>
         <Button variant='primary' type='submit'>
-          Submit
+          Login
         </Button>
       </Form>
     </div>
