@@ -8,9 +8,21 @@ const Login: React.FC = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const onChange = (e: any) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
 
-  const onSubmit = (e: any) => console.log(formData);
+  // FORM VALIDATION
+  const formValidate = (email: string, password: string) => {
+    if (!email.trim() || !password.trim()) {
+      console.log('Invalid fields!');
+      return false;
+    }
+    return true;
+  };
+
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    formValidate(email, password) && console.log(formData);
+  };
 
   const { email, password } = formData;
 
@@ -28,6 +40,7 @@ const Login: React.FC = () => {
             name='email'
             value={email}
             placeholder='Enter email'
+            required
             onChange={(e) => onChange(e)}
           />
           <Form.Text className='text-muted'>
@@ -42,6 +55,7 @@ const Login: React.FC = () => {
             name='password'
             value={password}
             placeholder='Password'
+            required
             onChange={(e) => onChange(e)}
           />
         </Form.Group>
