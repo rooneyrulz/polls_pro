@@ -48,7 +48,7 @@ export const login = (payload: Object) => async (dispatch: any) => {
       payload: data,
     });
   } catch (error) {
-    dispatch({ type: AUTH_ERROR });
+    dispatch({ type: LOGIN_FAIL });
     console.log(`login error: ${error}`);
   }
 };
