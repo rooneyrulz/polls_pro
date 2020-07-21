@@ -9,7 +9,7 @@ import AppFooter from './layouts/AppFooter';
 import Routing from './routes/Routing';
 
 // PROVIDER
-import Provider from './Provider';
+import RootProvider from './RootProvider';
 
 // REDUX
 import store from './store';
@@ -20,11 +20,11 @@ import './App.css';
 
 const App: React.FC = () => {
   // useEffect(() => {
-  //   store.dispatch(loadUser())
-  // }, loadUser);
+  //   store.dispatch(loadUser());
+  // }, []);
 
   return (
-    <Provider>
+    <RootProvider>
       <BrowserRouter>
         <div className='App'>
           <header>
@@ -38,7 +38,7 @@ const App: React.FC = () => {
           </footer>
         </div>
       </BrowserRouter>
-    </Provider>
+    </RootProvider>
   );
 };
 

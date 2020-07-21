@@ -4,8 +4,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 
-const Provider = (prop: any) => {
+const RootProvider = (prop: any) => {
   return <Provider store={store}>{prop.children}</Provider>;
 };
 
-export default Provider;
+export default RootProvider;
